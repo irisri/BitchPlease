@@ -1,5 +1,46 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-    <h2>Post details</h2>
+    <section>
+        <div class="post">
+            <h2 class="loader">{{post.title}}</h2>
+            {% if post.published_date %}
+                <div>
+                    {{post.published_date}}
+                </div>
+            {% else %}
+                <a href="{% url 'opst_publish' pk=post.pk %}">Publish</a>
+            {% endif %}
+    
+            <p>{{ post.title|safe|linebreaks }}</p>
+    
+            {% if user.is_authenticated %}
+                <a href="{% url 'poat_edit' pk=post.pk %}"><img src="{% static "icons/mode_edit-24px.svg" %}"></a>
+                <a href="{% url 'poat_remove' pk=post.pk %}"><img src="{% static "icons/clear-24px.svg" %}"></a>
+            {% endif %}
+            <hr>
+    
+            <a href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
+        </div>
+
+        <div class="comments">
+            {% for comment in post.comments.all %}
+                <br>
+                {% if user.is_authenticated or comment.approved_comment %}
+                    {{ comment.created_date }}
+                    {% if not comment.approved_comment %}
+                        <a href="{% url 'comment_approve' pk=comment.pk %}"><img src="{% static "icons/mode_edit-24px.svg" %}"></a>
+                        <a href="{% url 'comment_remove' pk=comment.pk %}"><img src="{% static "icons/done-24px.svg" %}"></a>
+                    {% endif %}
+                    <p>{{ comment.text|safe|linebreaks }}</p>
+                    <p>Posted by: {{ comment.author }}</p>
+                {% endif %}
+                <!-- If it's empty -->
+                {% empty %}
+                No comments
+            {% endfor %}
+        </div>
+
+    </section>
 {% endblock %}

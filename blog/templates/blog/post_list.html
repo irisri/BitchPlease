@@ -3,5 +3,18 @@
 {% block content %}
     <section>
         <h2>Look, posts!</h2>
+        <div class="flex wrap">
+            {% for post in post_list %}
+
+                <div class="post">
+                    <h2><a href="{% url 'post_detail' pk=post.pk %}"> {{ post.title } }</a></h2>
+                    <div>
+                        <p>Published on: {{ post_published|date:"D M Y" }}</p>
+                    </div>
+                    <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approve_comments.count }}</a>
+                </div>
+
+            {% endfor %}
+        </div>
     </section>
 {% endblock %}

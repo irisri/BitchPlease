@@ -1,70 +1,73 @@
 {% extends "base.html" %}
 {% load static %}
-<head>
-    <link rel="stylesheet" href="{% static "css/about.css" %}">
-</head>
-
 
 {% block content %}
-    <h2>Iris Rifold - FullStack web developer</h2>
-    <div class="rambling">
-        <p class="bitch">Bitch Please!</p>
-        <p>So... I'm a full stack web developer.</p>
-        <p>I have worked with Vue, Angular,React and now... <strong>Django!</strong></p>
-        <p><span>Bitch Please!</span></p>
-        <p>Yes, I'm currently (February 2021) not working, (corona, you absolutely F***ing @#@#$^^$#2@%^).</p>
-        <p>I am, of course, very familiar with HTML, CSS, and, and SASS!!!! (applause please)</p>
-    
-        <p>Fun fact about me, un-centered things just grinds my gears, I think that Lady Gaga is un artist and an inspiration, 
-            and I love to say, Bitch Please!, even if it's just in my head</p>
+    <head>
+        <link rel="stylesheet" href="{% static "css/about.css" %}">
+    </head>
 
-    </div>
-    <p>Also, my CV:</p>
-    <div class="cv">
-        <div class="contact-info">
+    <section class="container">
+
+        <div class="rambling">
+            <p>So... I'm a full stack web developer.</p>
+            <p>I have worked with Vue, Angular, React and now... <strong>Django!</strong></p>
+            <p class="bitch">Bitch Please!</p>
+            <p>Yes! I'm currently (February 2021) not working, (corona, you absolutely F***ing @#@#$^^$#2@%^).</p>
+            <p>I am, of course, very familiar with HTML, CSS, and, and SASS!!!! (applause please)</p>
+        
+            <p>Fun fact about me, un-centered things just grinds my gears, I love, LOVE Brooklyn 99, 
+                and I love to say, <span class="bitch">Bitch Please!</span>, 
+                even if it's just in my head.</p>
+        </div>
+
+        <p>Also, my CV:</p>
+        <div class="cv">
             <h3>IRis Rifold - FullStack wed developer</h3>
-            <a href = "https://www.linkedin.com/in/iris-rifold/">
-                <img src="{% static "icons/LI-In-Bug.png" %}" height="24px" filter: "grayscale(100%)">
-            </a>
-            <a href = "www.github.com/irisri">
-                <img src="{% static "icons/GitHub-Mark-32px.png" %}">
-            </a>
-            <a href = "mailto: irisrifold@gmail.com">
-                <span class="material-icons">
-                email
-                </span>
-            </a>
-        </div>
+            <div class="contact-info">
+                <h4>Contact me:</h4>
+                <a href = "https://www.linkedin.com/in/iris-rifold/">
+                    <img src="{% static "icons/LI-In-Bug.png" %}">
+                </a>
+                <a href = "www.github.com/irisri">
+                    <img src="{% static "icons/GitHub-Mark-32px.png" %}">
+                </a>
+                <a href = "mailto: irisrifold@gmail.com">
+                    <span class="material-icons">
+                    email
+                    </span>
+                </a>
+            </div>
 
-        <div class="summary">
-            <h4>Summary</h4>
-            <ul>
-                <li>Programing in modern JavaScript (ES6) including Object oriented programing.</li>
-                <li>HTML5, CSS3 and SASS; Responsive design and "mobile first"; bootstrap and jQuery.</li>
-                <li>Frameworks: Vue, React, Angular, Django.</li>
-                <li>Backend: RESTful applications with Node.JS and Python.</li>
-                <li>Database: MySQL and MongoDB.</li>
-                <li>Building a full-scale web app.</li>
-            </ul>
-            <p>Checkout my latest project: <strong><a href="https://endorphin-rush.herokuapp.com/">Endorphin-rush</a></strong></p>
-        </div>
+            <div>
+                <h4>Summary</h4>
+                <ul>
+                    <li>Programing in modern JavaScript (ES6) including Object oriented programing.</li>
+                    <li>HTML5, CSS3 and SASS; Responsive design and "mobile first"; bootstrap and jQuery.</li>
+                    <li>Frameworks: Vue, React, Angular, Django.</li>
+                    <li>Backend: RESTful applications with Node.JS and Python.</li>
+                    <li>Database: MySQL and MongoDB.</li>
+                    <li>Building a full-scale web app.</li>
+                </ul>
+                <p>Checkout my latest project: <strong><a class="bitch" href="https://endorphin-rush.herokuapp.com/">Endorphin-rush</a></strong></p>
+            </div>
 
-        <div class="education">
-            <h4>Education:</h4>
-            <un>
-                <li>Python and Django Fullstack web Bootcamp, Udemy.</li>
-                <li>Fullstack Web Coding Bootcamp, Coding Academy.</li>
-                <li>M.A Social Psychology, IDC, Israel.</li>
-                <li>B.A in Psychology, Ben-Gurion University.</li>
-            </un>
-        </div>
+            <div>
+                <h4>Education:</h4>
+                <ul>
+                    <li>Python and Django Fullstack web Bootcamp, Udemy.</li>
+                    <li>Fullstack Web Coding Bootcamp, Coding Academy.</li>
+                    <li>M.A Social Psychology, IDC, Israel.</li>
+                    <li>B.A in Psychology, Ben-Gurion University.</li>
+                </ul>
+            </div>
 
-        <div class="experience">
-            <h4>Experience:</h4>
-            <ul>
-                <li>Mar' 2019 – Apr' 2020: Human Resources Recruiter, Experitest.</li>
-                <li>Jan' 2016 – Jan' 2017: Administrative assistant, Amdocs.</li>
-            </ul>
+            <div>
+                <h4>Experience:</h4>
+                <ul>
+                    <li>Mar' 2019 – Apr' 2020: Human Resources Recruiter, Experitest.</li>
+                    <li>Jan' 2016 – Jan' 2017: Administrative assistant, Amdocs.</li>
+                </ul>
+            </div>
         </div>
-    </div>
+    </section>
 {% endblock %}

@@ -1,7 +1,37 @@
-.rambling {
-    background-color: blue;
+ul {
+    margin-top: 0;
 }
 
-.rambling .bitch {
-    color: #D98324;
+.rambling {
+    margin-bottom: 1.5rem;
 }
+
+.bitch {
+    color: #79ADDC;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+.cv h3 {
+    margin: 1.5rem 0;
+}
+
+.cv div {
+    margin-bottom: 20px;
+}
+
+.cv h4 {
+    margin-bottom: 10px;
+}
+
+
+.contact-info {
+    margin-bottom: 10px;
+}
+
+.contact-info a img {
+    height:24px; 
+    filter: grayscale(100%);
+}
+
