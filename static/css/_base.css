@@ -1,0 +1,62 @@
+@font-face {
+    font-family: Permanent;
+    src: url(../fonts/PermanentMarker-Regular.ttf);
+}
+
+@font-face {
+    font-family: Raleway;
+    src: url(../fonts/Raleway-VariableFont_wght.ttf);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Raleway, Helvetica, sans-serif;
+}
+
+body{
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-family: Permanent;
+    font-size: 4rem;
+    color: #A40606;
+}
+
+h2, h3, h4 {
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 0.2rem;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+header {
+    padding: 3.5rem 0;
+}
+
+header nav a {
+    margin-right: 2rem;
+}
+
+header nav a:last-of-type {
+    margin: 0;
+}
+
+a:hover {
+    color: #D98324;
+}

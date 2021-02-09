@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div>
+        <h2>Please Login:</h2>
+        <h3>(Must be SuperUser, please check with the site admin)</h3>
+
+        <!-- if there are any errors in the form -->
+        {% if form.errors %}
+            <p>Your username and password don't match! Please try again.</p>
+        {% endif %}
+
+        <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+                {% form.as_p %}
+                <input type="submit" value="Login">
+                <!-- The view that we're working with. basically what to do next when the person logged in -->
+                <input type="hidden" name="next" value="{{next}}">
+        </form>
+
+    </div>
+
+
+{% endblock %}
