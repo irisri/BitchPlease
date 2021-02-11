@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>Confirm delete</h2>
+    <section class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <!-- the delete view does automatically the object has that name -->
+            <p>Are you sure you want to delete {{ object }}?</p>
+            <input type="submit" value="Delete">
+        </form>>
+
+    </section>
 {% endblock %}

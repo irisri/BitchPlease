@@ -1,5 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>Post from</h2>
+    <section class="container">
+        <h2>New post</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save</button>
+        </form>        
+    </section>
+    
+    <!-- the class editable is in the form module as a widgets -->
+    <script>var editor = new MediumEditor('.editable');</script>
 {% endblock %}

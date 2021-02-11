@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <div>
+    <section class="container">
         <h2>Please Login:</h2>
         <h3>(Must be SuperUser, please check with the site admin)</h3>
 
@@ -13,13 +13,12 @@
 
         <form action="{% url 'login' %}" method="POST">
             {% csrf_token %}
-                {% form.as_p %}
+                {{ form.as_p }}
                 <input type="submit" value="Login">
                 <!-- The view that we're working with. basically what to do next when the person logged in -->
                 <input type="hidden" name="next" value="{{next}}">
         </form>
 
-    </div>
-
+    </section>
 
 {% endblock %}
