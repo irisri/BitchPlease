@@ -50,16 +50,15 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
 
 class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
-    success_url = reverse_lazy('post_list')
+    success_url = reverse_lazy('blog:post_list')
 
 
 class DraftListView(LoginRequiredMixin, ListView):
     login_url = '/login/'
-    redirect_field_name = 'blog/post_List.html'
+    redirect_field_name = 'blog/post_list.html'
     model = Post
     def get_queryset(self):
-        return Post.objects.fillter(published_date__isnull=True).order_by('created_date')
-
+        return Post.objects.filter(published_date__isnull=True).order_by('created_date')
 
 ###### FUNCTION VIEWS FOR THE COMMENTS ######
 
@@ -67,7 +66,7 @@ class DraftListView(LoginRequiredMixin, ListView):
 def post_publish(request, pk):
     post = get_object_or_404(Post, pk = pk)
     post.publish()
-    return redirect('post_detail', pk = pk)
+    return redirect('blog:post_detail', pk = pk)
 
 
 @login_required
@@ -80,7 +79,7 @@ def add_comment_to_post(request, pk):
             # Connection the comment to the post object
             comment.post = post
             comment.save()
-            return redirect('post_list', pk = post.pk)
+            return redirect('blog:post_list', pk = post.pk)
     else: 
         form = CommentForm()
     return render(request, 'blog/comment_form.html')
@@ -91,7 +90,7 @@ def comment_approve(request, pk):
     comment = get_object_or_404(Comment, pk = pk)
     # The approve is from the comment module file
     comment.approve()
-    return redirect('post_detail', pk = comment.post.pk)
+    return redirect('blog:post_detail', pk = comment.post.pk)
 
 
 @login_required
@@ -99,7 +98,7 @@ def comment_approve(request, pk):
     comment = get_object_or_404(Comment, pk = pk)
     # From the comment module file
     comment.approve()
-    return redirect('post_detail', pk = comment.post.pk)
+    return redirect('blog:post_detail', pk = comment.post.pk)
 
 
 @login_required
@@ -108,4 +107,4 @@ def comment_remove(request, pk):
     post_pk = comment.post.pk
     # Delete from DB, with the PK so need to save before
     comment.delete()
-    return redirect('post_detail', pk = post_pk)
+    return redirect('blog:post_detail', pk = post_pk)

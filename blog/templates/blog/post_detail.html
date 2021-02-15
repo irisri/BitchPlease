@@ -2,6 +2,10 @@
 {% load static %}
 
 {% block content %}
+    <head>
+        <link rel="stylesheet" href="{% static "css/post_detail.css" %}">
+    </head>
+
     <section class="container">
         <div class="post">
             <h2 class="loader">{{post.title}}</h2>
@@ -10,35 +14,35 @@
                     {{post.published_date}}
                 </div>
             {% else %}
-                <a href="{% url 'opst_publish' pk=post.pk %}">Publish</a>
+                <a href="{% url 'blog:post_publish' pk=post.pk %}"><p class="link-button">Publish</p></a>
             {% endif %}
     
-            <p>{{ post.title|safe|linebreaks }}</p>
+            <p>{{ post.text|safe|linebreaks }}</p>
     
             {% if user.is_authenticated %}
-                <a href="{% url 'poat_edit' pk=post.pk %}"><img src="{% static "icons/mode_edit-24px.svg" %}"></a>
-                <a href="{% url 'poat_remove' pk=post.pk %}"><img src="{% static "icons/clear-24px.svg" %}"></a>
+                <a href="{% url 'blog:post_edit' pk=post.pk %}"><img class="link-button" src="{% static "icons/mode_edit-24px.svg" %}"/></a>
+                <a href="{% url 'blog:post_remove' pk=post.pk %}"><img class="link-button" src="{% static "icons/clear-24px.svg" %}"/></a>
             {% endif %}
-            <hr>
-    
-            <a href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
+            
+            <!-- <a href="{% url 'blog:add_comment_to_post' pk=post.pk %}">Add comment</a> -->
         </div>
-
+        
+        <hr>
         <div class="comments">
             {% for comment in post.comments.all %}
                 <br>
                 {% if user.is_authenticated or comment.approved_comment %}
                     {{ comment.created_date }}
                     {% if not comment.approved_comment %}
-                        <a href="{% url 'comment_approve' pk=comment.pk %}"><img src="{% static "icons/mode_edit-24px.svg" %}"></a>
-                        <a href="{% url 'comment_remove' pk=comment.pk %}"><img src="{% static "icons/done-24px.svg" %}"></a>
+                        <a href="{% url 'blog:comment_approve' pk=comment.pk %}"><img src="{% static "icons/mode_edit-24px.svg" %}"></a>
+                        <a href="{% url 'blog:comment_remove' pk=comment.pk %}"><img src="{% static "icons/done-24px.svg" %}"></a>
                     {% endif %}
                     <p>{{ comment.text|safe|linebreaks }}</p>
                     <p>Posted by: {{ comment.author }}</p>
                 {% endif %}
                 <!-- If it's empty -->
                 {% empty %}
-                No comments
+                No comments!
             {% endfor %}
         </div>
 
