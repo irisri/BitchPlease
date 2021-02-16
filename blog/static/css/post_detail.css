@@ -18,10 +18,11 @@ p {
     padding: 5px;
     background-color: white;
     margin: 15px 0;
+    font-size: 1rem;
 }
 
-img.link-button {
-    margin-right: 10px;
+.post a {
+    margin-right: 5px;
 }
 
 .link-button:hover {

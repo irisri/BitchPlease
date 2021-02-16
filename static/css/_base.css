@@ -49,14 +49,16 @@ header {
     padding: 3.5rem 0;
 }
 
-header nav a {
+nav a {
     margin-right: 2rem;
+    transition: font-size 0.5s;
 }
 
-header nav a:last-of-type {
+nav a:last-of-type {
     margin: 0;
 }
 
-a:hover {
+nav a:hover {
     color: #D98324;
+    font-size: 1.1rem;
 }

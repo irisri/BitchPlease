@@ -14,14 +14,14 @@
                     {{post.published_date}}
                 </div>
             {% else %}
-                <a href="{% url 'blog:post_publish' pk=post.pk %}"><p class="link-button">Publish</p></a>
+                <a  href="{% url 'blog:post_publish' pk=post.pk %}"><p class="link-button">Publish</p></a>
             {% endif %}
     
             <p>{{ post.text|safe|linebreaks }}</p>
     
             {% if user.is_authenticated %}
-                <a href="{% url 'blog:post_edit' pk=post.pk %}"><img class="link-button" src="{% static "icons/mode_edit-24px.svg" %}"/></a>
-                <a href="{% url 'blog:post_remove' pk=post.pk %}"><img class="link-button" src="{% static "icons/clear-24px.svg" %}"/></a>
+                <a href="{% url 'blog:post_edit' pk=post.pk %}"><i class="fas fa-edit link-button"></i></a>
+                <a href="{% url 'blog:post_remove' pk=post.pk %}"><i class="fas fa-trash-alt link-button"></i></a>
             {% endif %}
             
             <!-- <a href="{% url 'blog:add_comment_to_post' pk=post.pk %}">Add comment</a> -->
