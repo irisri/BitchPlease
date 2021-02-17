@@ -1,13 +1,9 @@
 {% extends "base.html" %}
-{% load static %}
 
 {% block content %}
-<head>
-    <!-- <link rel="stylesheet" href="{% static "css/about.css" %}"> -->
-</head>
 
     <section class="container">
-        <h2>New post</h2>
+        <h2>Do you have any thing to share?</h2>
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}

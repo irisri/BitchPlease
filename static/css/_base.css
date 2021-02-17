@@ -62,3 +62,17 @@ nav a:hover {
     color: #D98324;
     font-size: 1.1rem;
 }
+
+.post-card {
+    background-color: white;
+    padding: 20px;
+    margin: 5px 20px 5px 0;
+    border: 1px solid #696969;
+    border-radius: 20px;
+    transition: border-color color 0.8s;
+}
+
+.post-card:hover {
+    border-color: black;
+    color: #D98324;
+}

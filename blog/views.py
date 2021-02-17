@@ -80,24 +80,16 @@ def add_comment_to_post(request, pk):
             # Connection the comment to the post object
             comment.post = post
             comment.save()
-            return redirect('blog:post_list', pk = post.pk)
+            return redirect('blog:post_detail', pk = post.pk)
     else: 
         form = CommentForm()
-    return render(request, 'blog/comment_form.html')
+    return render(request, 'blog/comment_form.html', {'form': form})
 
 
 @login_required
 def comment_approve(request, pk):
     comment = get_object_or_404(Comment, pk = pk)
     # The approve is from the comment module file
-    comment.approve()
-    return redirect('blog:post_detail', pk = comment.post.pk)
-
-
-@login_required
-def comment_approve(request, pk):
-    comment = get_object_or_404(Comment, pk = pk)
-    # From the comment module file
     comment.approve()
     return redirect('blog:post_detail', pk = comment.post.pk)
 

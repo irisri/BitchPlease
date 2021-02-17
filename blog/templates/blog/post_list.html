@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
+
     <section class="container">
         <h2>Look, posts!</h2>
 
         <div class="flex wrap">
 
             {% for post in post_list %}
-                <div class="post">
+                <div class="post-card">
                     <h2><a href="{% url 'blog:post_detail' pk=post.pk %}"> {{ post.title }}</a></h2>
                     <div>
                         <p>Published on: {{ post.published_date|date:"D M Y" }}</p>

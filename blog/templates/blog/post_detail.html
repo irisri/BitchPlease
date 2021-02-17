@@ -8,11 +8,9 @@
 
     <section class="container">
         <div class="post">
-            <h2 class="loader">{{post.title}}</h2>
+            <h2>{{post.title}}</h2>
             {% if post.published_date %}
-                <div>
-                    {{post.published_date}}
-                </div>
+                <p>{{post.published_date}}</p>
             {% else %}
                 <a  href="{% url 'blog:post_publish' pk=post.pk %}"><p class="link-button">Publish</p></a>
             {% endif %}
@@ -20,29 +18,33 @@
             <p>{{ post.text|safe|linebreaks }}</p>
     
             {% if user.is_authenticated %}
+            <div class="check-with-user">
                 <a href="{% url 'blog:post_edit' pk=post.pk %}"><i class="fas fa-edit link-button"></i></a>
                 <a href="{% url 'blog:post_remove' pk=post.pk %}"><i class="fas fa-trash-alt link-button"></i></a>
+            </div>
             {% endif %}
             
-            <!-- <a href="{% url 'blog:add_comment_to_post' pk=post.pk %}">Add comment</a> -->
         </div>
         
         <hr>
         <div class="comments">
+            <a class="link-button right" href="{% url 'blog:add_comment_to_post' pk=post.pk %}">Add comment</a>
             {% for comment in post.comments.all %}
                 <br>
                 {% if user.is_authenticated or comment.approved_comment %}
                     {{ comment.created_date }}
-                    {% if not comment.approved_comment %}
-                        <a href="{% url 'blog:comment_approve' pk=comment.pk %}"><img src="{% static "icons/mode_edit-24px.svg" %}"></a>
-                        <a href="{% url 'blog:comment_remove' pk=comment.pk %}"><img src="{% static "icons/done-24px.svg" %}"></a>
-                    {% endif %}
                     <p>{{ comment.text|safe|linebreaks }}</p>
                     <p>Posted by: {{ comment.author }}</p>
+                    {% if not comment.approved_comment %}
+                    <div class="check-with-user">
+                        <a href="{% url 'blog:comment_approve' pk=comment.pk %}"><i class="fas fa-check link-button"></i></a>
+                        <a href="{% url 'blog:comment_remove' pk=comment.pk %}"><i class="fas fa-trash-alt link-button"></i></a>
+                    </div>
+                    {% endif %}
                 {% endif %}
                 <!-- If it's empty -->
                 {% empty %}
-                No comments!
+                <p>No comments!</p>
             {% endfor %}
         </div>
 
