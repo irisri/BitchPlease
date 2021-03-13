@@ -1,9 +1,12 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
     <section class="container">
         <h2>Welcome: {{user.username}} </h2>
         <p>This is a blog website. You can add posts, edit and do what you want basically. </p>
         <p>Don't forget to login!!</p>
+
+        <img src="{% static "images/bitch_please.gif" %}" width="250" />
     </section>
 {% endblock %}
